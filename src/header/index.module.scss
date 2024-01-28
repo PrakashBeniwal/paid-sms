@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 2vw;
+
+    .brand {
+        color: #38D9BA;
+    }
+
+    .pages {
+        display: flex;
+        gap: 2vw;
+
+        @media (max-width:650px){
+            display: none;
+        }
+    }
+
+
+    .account {
+        display: flex;
+        gap: 1vw;
+    }
+
+}
