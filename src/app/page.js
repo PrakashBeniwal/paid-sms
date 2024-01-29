@@ -1,11 +1,11 @@
-"use client"
+// "use client"
 import styles from "./page.module.scss";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import axios from 'axios'
 import Link from "next/link";
-export default function Home() {
+export default async function  Home() {
 
-  const [data, setdata] = useState([])
+  // const [data, setdata] = useState([])
 
  const getData=async()=>{
 
@@ -20,17 +20,20 @@ const options = {
 
 try {
 	const response = await axios.request(options);
-  setdata(response.data)
+  // setdata(response.data)
+  return response.data;
 } catch (error) {
 	console.error(error);
 }
   }
 
-  useEffect(() => {
-    getData()
+  // useEffect(() => {
+  //   getData()
   
-  return
-  },[0])
+  // return
+  // },[0])
+  
+  const data=await getData();
   
 
   return (
@@ -47,7 +50,7 @@ try {
         </div>
         <div className={styles.text}>services</div>
         <div className={styles.allServices}>
-         { data.map((s,index)=>{
+         {data&& data.map((s,index)=>{
           return(
             <Link href={s.countryCode} key={index} className={styles.singleService} >
             <div className={styles.serviceName}>{s.countryName}</div>
